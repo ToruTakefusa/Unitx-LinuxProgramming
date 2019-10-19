@@ -18,7 +18,7 @@ static int num_recs;
 static int cur_rec;
 static int fd_utmp = -1;
 
-umtp_open(char *filename){
+int utmp_open(char *filename){
   fd_utmp = open(filename, O_RDONLY);
   cur_rec = num_recs = 0;
   return fd_utmp;
@@ -45,7 +45,7 @@ int utmp_reload() {
   return num_recs;
 }
 
-utmp_close() {
+int utmp_close() {
   if (fd_utmp != -1)
     close(fd_utmp);
 }
